@@ -8,7 +8,6 @@ let diemKoalas = tinhTrungBinh(88, 91, 110);
 console.log("Điểm của đội Dolphins: ", diemDolphins.toFixed(2));
 console.log("Điểm của đội Koalas: ", diemKoalas.toFixed(2));
 
-//người chiến thắng
 if (diemDolphins > diemKoalas && diemDolphins >= 100) {
   console.log("Đội Dolphins giành chiến thắng!");
 } else if (diemDolphins < diemKoalas && diemKoalas >= 100) {
