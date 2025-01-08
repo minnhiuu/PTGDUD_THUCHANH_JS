@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tuan 1 bai 6</title>
+</head>
+<body>
+    <h1>Tuan 1 bai 6</h1>
+
+    <script>
+        const calcTip = (bill) => {
+            return (bill >= 50 && bill <= 300) ? bill * 0.15 : bill * 0.20;
+        };
+
+        const bills = [125, 555, 44];
+
+        const tips = bills.map(bill => calcTip(bill));
+
+        const total = bills.map((bill, index) => bill + tips[index]);
+
+        console.log('Bills:', bills);
+        console.log('Tips:', tips);
+        console.log('Total:', total);
+    </script>
+</body>
+</html>
