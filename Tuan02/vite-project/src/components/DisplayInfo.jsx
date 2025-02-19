@@ -1,22 +1,34 @@
-import React, { Component } from 'react'
+import React from "react";
+const DisplayInfo = (props) => {
 
-export default class DisplayInfo extends Component {
-    render() {
-        const { listUser } = this.props;
-        console.log(listUser)
-        return (
-            <div>
-                {listUser.map((user) => {
+    // template + logic js
+    const { listUsers } = props
+
+
+
+    return (
+        <div className="display-info-user">
+            {/* <img src={logo} /> */}
+
+
+            <>
+                {listUsers.map((user) => {
                     return (
-                        <div key={user.id}>//mỗi phần tử trên trang hải là duy nhất
-                            <div>My name is: {user.Name}</div>
-                            <div>My Age: {user.Age}</div>
+                        <React.Fragment key={user.id
+                        }>
+                            <div className={user.age > 18 ? "green" : "red"} >
+                                <div>My name {user.name}</div>
+                                <div>My age {user.age}</div>
+                                <div>My address {user.address}</div>
+                            </div>
                             <hr />
-                        </div>
+                        </React.Fragment>
                     )
                 })}
-            </div>
-        )
-    }
+            </>
 
+        </div>
+    )
 }
+
+export default DisplayInfo;

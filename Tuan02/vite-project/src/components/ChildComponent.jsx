@@ -1,11 +1,17 @@
-import React, { Component } from 'react'
+import React from "react";
 
-export default class Childcomponent extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            valueInput: 'abc'
-        }
+class Childcomponent extends React.Component {
+    state = {
+        name: "",
+        age: 0,
+        address: ""
+    }
+    handleClick(id, name, age) {
+        this.props.handleAddNewUser({
+            id: id,
+            name: name,
+            age: age
+        });
     }
     handleInput = (event) => {
         //console.log(event.target.value);
@@ -13,28 +19,50 @@ export default class Childcomponent extends Component {
             valueInput: event.target.value
         })
     }
-
+    handleOnchangeName(event) {
+        this.setState({
+            name: event.target.value
+        })
+    }
+    handleOnchangeAge(event) {
+        this.setState({
+            age: event.target.value
+        })
+    }
+    handleOnchangeAddress(event) {
+        this.setState({
+            address: event.target.value
+        })
+    }
     render() {
-        const {myProp , sum}=this.props;
         return (
             <>
-            <input value={this.state.valueInput} 
- onChange={(event) => {this.handleInput(event) }} 
- type="text" />
- <div>
-            	<span>{this.state.valueInput}</span>
-         	</div>
-
-
-                <h1>
-                   call function sum:6+7={sum(6, 7)}
-			   //gọi hàm sum từ component cha
-                </h1>
-
+                My name is {this.state.name}, i am {this.state.age} year old, i live in {this.state.address}
+                <form onSubmit={(event) => { this.handleSubmit(event) }}>
+                    <label>Your name:</label>
+                    <input
+                        value={this.state.name}
+                        type="text"
+                        onChange={(event) => this.handleOnchangeName(event)}
+                    /> <br />
+                    <label>Your age:</label>
+                    <input
+                        value={this.state.age}
+                        type="text"
+                        onChange={(event) => this.handleOnchangeAge(event)}
+                    /><br />
+                    <label>Your address:</label>
+                    <input
+                        value={this.state.address}
+                        type="text"
+                        onChange={(event) => this.handleOnchangeAddress(event)}
+                    />
+                    <button type="button" onClick={(event) => { this.handleClick(this.state.address, this.state.name, this.state.age) }}>on click</button>
+                </form>
             </>
         );
-    };
-
-
+    }
 
 }
+
+export default Childcomponent;
